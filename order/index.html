@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Receipt Generator</title>
+    <style>
+        /* Add your desired CSS styles for the website */
+    </style>
+</head>
+<body>
+    <h1>Receipt Generator</h1>
+
+    <form id="receiptForm">
+        <label for="customerName">Customer Name:</label>
+        <input type="text" id="customerName" required>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody id="itemRowsContainer">
+                <!-- Dynamically add item rows here -->
+            </tbody>
+        </table>
+
+        <button type="button" id="addItemButton">Add Item</button>
+
+        <p>Total: $<span id="totalAmount">0.00</span></p>
+
+        <button type="button" id="generateReceiptButton">Generate Receipt</button>
+    </form>
+
+    <div id="receiptOutput"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
