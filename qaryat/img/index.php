@@ -43,5 +43,9 @@ if(isset($_GET['logout'])){
     </table>
     <br>
     <a href="upload.php">Upload Image</a>
+      <script>
+     document.location.href = '../orders/user_order.php';
+  </script>
   </body>
 </html>
+ 

@@ -1,7 +1,19 @@
 <?php
-include "db_conn.php";
+include "../controle/db_conn.php";
 
-$user_id = $_SESSION['user_id']
+include '../login/config.php';
+session_start();
+$user_id = $_SESSION['user_id'];
+
+if(!isset($user_id)){
+   header('location:../login/login.php');
+};
+
+if(isset($_GET['logout'])){
+   unset($user_id);
+   session_destroy();
+   header('location:../login/login.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -48,11 +60,13 @@ $user_id = $_SESSION['user_id']
           <th scope="col">ملاحضات</th>
           <th scope="col">رقم المستلم </th>
           <th scope="col">العنوان </th>
+          <th scope="col">تحكم </th>
+
         </tr>
       </thead>
       <tbody>
         <?php
-        $sql = "SELECT * FROM `orders` WHERE id = '$user_id'";
+        $sql = "SELECT * FROM `orders` WHERE user_id = '$user_id'";
         $result = mysqli_query($conn, $sql);
         while ($row = mysqli_fetch_assoc($result)) {
         ?>
@@ -67,6 +81,8 @@ $user_id = $_SESSION['user_id']
             <td>
               <a href="edit.php?id=<?php echo $row["id"] ?>" class="link-dark"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
               <a href="delete.php?id=<?php echo $row["id"] ?>" class="link-dark"><i class="fa-solid fa-trash fs-5"></i></a>
+                            <a href="../orders/user_order.php?id=<?php echo $row["id"] ?>" class="link-dark">عرض </a>
+
             </td>
           </tr>
         <?php

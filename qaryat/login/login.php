@@ -13,16 +13,25 @@ if(isset($_POST['submit'])){
    if(mysqli_num_rows($select) > 0){
       $row = mysqli_fetch_assoc($select);
 
+         $_SESSION['user_name'] = $row['name'];
+         
+
       if($row['usertype'] == 'huzaifaD'){
          $_SESSION['user_id'] = $row['id'];
+          $_SESSION['admin'] = 'huzaifaD';
+
       header('location:../controle/index.php');
       }
       elseif ($row['usertype'] == 'clint') {
          // code...
+                   $_SESSION['admin'] = 'clint';
+
            $_SESSION['user_id'] = $row['id'];
       header('location:../orders/index.php');
       }
        elseif ($row['usertype'] == 'page') {
+                   $_SESSION['admin'] = 'update_image';
+
          // code...
            $_SESSION['user_id'] = $row['id'];
       header('location:../orders/index.php');

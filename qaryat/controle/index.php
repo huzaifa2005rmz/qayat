@@ -1,5 +1,27 @@
 <?php
 include "db_conn.php";
+
+include '../login/config.php';
+session_start();
+$user_id = $_SESSION['user_id'];
+ $admint = $_SESSION['admin'];
+
+
+if($admint == "huzaifaD"){
+    if(!isset($user_id)){
+       header('location:../login/login.php');
+    };
+
+    if(isset($_GET['logout'])){
+       unset($user_id);
+       session_destroy();
+       header('location:../login/login.php');
+    }
+}else{
+         header('location:../login/login.php');
+
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -41,6 +63,7 @@ include "db_conn.php";
       <thead class="table-dark">
         <tr>
           <th scope="col">ID</th>
+         <th scope="col">اسم الزبون \الحساب التجاري  </th>
           <th scope="col">رقم الطلب </th>
           <th scope="col">السعر</th>
           <th scope="col">ملاحضات</th>
@@ -56,6 +79,7 @@ include "db_conn.php";
         ?>
           <tr>
             <td><?php echo $row["id"] ?></td>
+            <td><?php echo $row["order_page_name"] ?></td>
             <td><?php echo $row["orderN"] ?></td>
             <td><?php echo $row["price"] ?></td>
             <td><?php echo $row["note"] ?></td>
@@ -64,7 +88,10 @@ include "db_conn.php";
 
             <td>
               <a href="edit.php?id=<?php echo $row["id"] ?>" class="link-dark"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
+                                          <a href="order.php?id=<?php echo $row["id"] ?>" class="link-dark">عرض </a>
+
               <a href="delete.php?id=<?php echo $row["id"] ?>" class="link-dark"><i class="fa-solid fa-trash fs-5"></i></a>
+
             </td>
           </tr>
         <?php

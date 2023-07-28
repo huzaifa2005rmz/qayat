@@ -35,16 +35,26 @@ if(isset($_POST["submit"])){
     $filesArray[] = $newImageName;
   }
 
+  // start php code for foring kay 
+
+$foringkeyImages = mysqli_query($conn,  "SELECT * FROM `orders` WHERE user_id = '$user_id' ORDER BY ID DESC LIMIT 1");
+$foringkeyImage = mysqli_fetch_assoc($foringkeyImages);
+  $order_idN = $foringkeyImage['id'];
+
+  // end php code for foring kay 
+
+
+
   $filesArray = json_encode($filesArray);
-  $query = "INSERT INTO tb_images VALUES('', '$name', '$filesArray')";
+  $query = "INSERT INTO tb_images(`id`, `order_id`, `name`, `image`) VALUES('','$order_idN', '$name', '$filesArray')";
   mysqli_query($conn, $query);
   echo
-  "
+  '
   <script>
-    alert('Successfully Added');
-    document.location.href = 'index.php';
+    alert("Successfully Added");
+    document.location.href = "../orders/user_order.php?id=' .$order_idN.'";
   </script>
-  ";
+  ';
 }
 ?>
 <html>
