@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@600;800;1000&display=swap');
+*{
+	font-family: 'Cairo', sans-serif;
+}
+body{
+	text-align: center;
+    max-height: 100vh;
+    width: 600px;
+    margin: auto;
+}
+.haeder-order{
+	border-bottom: solid 2px #333;
+}
+.order-description{
+	text-align: right;
+	padding: 20px;
+}
+.order-description p.text-p{
+	border-bottom: solid 1px #333;
+	padding: 10px;
+}
+.images{
+	display: grid;
+	grid-template-columns: repeat(3, auto);
+	grid-gap: 10px;
+	text-align: center;
+}
+.images img{
+	width: 200px;
+	
+}
