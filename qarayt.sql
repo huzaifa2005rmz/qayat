@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 31, 2023 at 02:29 PM
--- Server version: 10.4.28-MariaDB
+-- Generation Time: 31 يوليو 2023 الساعة 17:20
+-- إصدار الخادم: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
+-- بنية الجدول `orders`
 --
 
 CREATE TABLE `orders` (
@@ -36,21 +36,22 @@ CREATE TABLE `orders` (
   `addreces` varchar(255) NOT NULL,
   `user_id` varchar(255) NOT NULL,
   `order_page_name` varchar(255) NOT NULL,
-  `page_name` varchar(255) NOT NULL
+  `page_name` varchar(255) NOT NULL,
+  `statuse` varchar(50) NOT NULL,
+  `Governorate` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `orders`
+-- إرجاع أو استيراد بيانات الجدول `orders`
 --
 
-INSERT INTO `orders` (`id`, `orderN`, `price`, `note`, `userNumber`, `addreces`, `user_id`, `order_page_name`, `page_name`) VALUES
-(81, '1', '90', '237غ21', '0772267873', 'بغداد  البياع  حي الجهاد', '12', 'huzaifa', ''),
-(82, '12', '95', '555', '07811930693', 'بغداد  البياع  حي الجهاد', '12', 'huzaifa', 'بحر');
+INSERT INTO `orders` (`id`, `orderN`, `price`, `note`, `userNumber`, `addreces`, `user_id`, `order_page_name`, `page_name`, `statuse`, `Governorate`) VALUES
+(91, '12', '90', 'text', '077.....', 'text', '13', 'زبون احمد ', '', '', '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_images`
+-- بنية الجدول `tb_images`
 --
 
 CREATE TABLE `tb_images` (
@@ -61,17 +62,16 @@ CREATE TABLE `tb_images` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tb_images`
+-- إرجاع أو استيراد بيانات الجدول `tb_images`
 --
 
 INSERT INTO `tb_images` (`id`, `name`, `image`, `order_id`) VALUES
-(102, '12', '[\"64c589d538106.jpg\"]', 81),
-(103, '12', '[\"64c689b474d13.jpg\",\"64c689b47609b.jpg\",\"64c689b477423.png\"]', 82);
+(112, '13', '[\"64c7cde09aa45.jpg\"]', 91);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_form`
+-- بنية الجدول `user_form`
 --
 
 CREATE TABLE `user_form` (
@@ -84,7 +84,7 @@ CREATE TABLE `user_form` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `user_form`
+-- إرجاع أو استيراد بيانات الجدول `user_form`
 --
 
 INSERT INTO `user_form` (`id`, `name`, `email`, `password`, `image`, `usertype`) VALUES
@@ -123,13 +123,13 @@ ALTER TABLE `user_form`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
 -- AUTO_INCREMENT for table `tb_images`
 --
 ALTER TABLE `tb_images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
 
 --
 -- AUTO_INCREMENT for table `user_form`
@@ -138,11 +138,11 @@ ALTER TABLE `user_form`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- Constraints for dumped tables
+-- قيود الجداول المُلقاة.
 --
 
 --
--- Constraints for table `tb_images`
+-- قيود الجداول `tb_images`
 --
 ALTER TABLE `tb_images`
   ADD CONSTRAINT `tb_images_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`),
