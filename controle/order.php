@@ -48,7 +48,7 @@ $id = $_GET["id"];
     $row = mysqli_fetch_assoc($result);
 
 include '../login/config.php';
-session_start();
+
 $user_id = $_SESSION['user_id'];
 $admint = $_SESSION['admin'];
 
@@ -83,7 +83,7 @@ if(isset($_GET['logout'])){
 	<div class="haeder-order">
 		<h1> مطبعة عشتار </h1>
 	</div>
-       <div class="order-description">
+       <div class="order-description" style="padding: 0;">
         <?php
 
          $sqlUser = "SELECT * FROM `user_form` WHERE id = '$user_id'";
@@ -97,9 +97,9 @@ if(isset($_GET['logout'])){
        	<p class="text-p ">  <?php echo $userInfoN['name'] ?> : منشائ الطلب   </p>
         <p class="text-p "> اسم  الحساب التجاري : <?php echo $row['page_name'] ?></p>
        	<p class="text-p "> <?php echo $row['orderN'] ?> :رقم الطلب </p>
-       	<p class="text-p "> النوع :<?php echo $row['price'] ?> </p>
+       	<p class="text-p "> السعر:<?php echo $row['price'] ?> </p>
        	<p class="text-p "><?php echo $row["userNumber"] ?> :رقم الهاتف </p>
-       	<p class="text-p ">العنوان: <?php echo $row["addreces"]  ?>  </p>
+       	<p class="text-p ">العنوان: <?php echo $row["Governorate"] ?> <?php echo $row["addreces"] ?> <?php echo $row["Governorate"] ?>  </p>
         <span>ملاحضة </span>
        	<p class="text-p ">  <?php echo $row["note"]  ?> </p> 
        </div>

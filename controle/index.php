@@ -177,9 +177,9 @@ https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css
           <table>
             <thead>
               <tr>
-                <th>User</th>
-                <th>Date Order</th>
-                <th>Status</th>
+                <th>ID</th>
+                <th>USERNAME</th>
+                <th>ORDER NUMBER</th>
               </tr>
             </thead>
 
@@ -202,6 +202,15 @@ https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css
     text-align: end;"><?php echo $row["note"] ?></td>
             <td><?php echo $row["userNumber"] ?></td>
             <td><?php echo $row["addreces"] ?></td>
+            <td><a href="order.php?id=<?php echo $row["id"] ?>" class="link-dark" style= "color: red"><?php if($row["statuse"] == "1"){
+              echo "قيد التجهيز ";}elseif($row["statuse"] == "2"){
+                 echo "تم ارسال الطلب الى شركة التوصيل ";
+              }elseif($row["statuse"] == "3"){
+                echo "تم استلام الطلب ";
+             }
+             elseif($row["statuse"] == "4"){
+              echo "طلب راجع";
+           }?> </a></td>
                   <td><a href="delete.php?id=<?php echo $row["id"] ?>" class="link-dark"><i style="padding: 10px; color: #333;" class="bi bi-trash-fill"></i></a></td>
                   <td><a href="edit.php?id=<?php echo $row["id"] ?>" class="link-dark"><i style="padding: 10px; color: #333;" class="bi bi-pencil-square"></i></a> </td>
                   <td> <a href="order.php?id=<?php echo $row["id"] ?>" class="link-dark"><i style="padding: 10px; color: #333;" class="bi bi-box-arrow-up-right"></i> </a></td>

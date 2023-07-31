@@ -40,15 +40,17 @@ if (isset($_POST["submit"])) {
    $price = $_POST['price'];
    $note = $_POST['note'];
    $userNumber = $_POST['userNumber'];
-   $addreces = $_POST['addreces'];
+   $addreces =  $_POST['addreces'] ;
+   $Governorate = $_POST['Governorate'];
    $user_id = $userInfo['id'];
    $order_page_name = $_SESSION['user_name'];
+   $statuse = 1;
 
 
 
 
-   $sql = "INSERT INTO `orders`(`orderN`, `price`, `note`, `userNumber`, `addreces`, `user_id`, `order_page_name`, `page_name`) 
-   VALUES ('$orderN','$price','$note','$userNumber','$addreces', '$user_id', '$order_page_name', '$page_name')";
+   $sql = "INSERT INTO `orders`(`orderN`, `price`, `note`, `userNumber`, `addreces`, `user_id`, `order_page_name`, `page_name`, `statuse`, `Governorate`) 
+   VALUES ('$orderN','$price','$note','$userNumber','$addreces', '$user_id', '$order_page_name', '$page_name', '$statuse', '$Governorate')";
 
    $result = mysqli_query($conn, $sql);
 
@@ -203,7 +205,7 @@ if(isset($_GET['logout'])){
     
 
       <div class="container d-flex justify-content-center">
-         <form action="" method="post" style="width:50vw; min-width:300px;">
+         <form action="" method="post" style="width:50vw; min-width:300px; text-align:end;">
             <div class="row mb-3">
               
                <div class="col">
@@ -224,11 +226,35 @@ if(isset($_GET['logout'])){
                <label class="form-label">رقم هاتف المستلم :</label>
                <input type="text" class="form-control" name="userNumber" placeholder="اكتب رقم المستلم ">
             </div>
-
-            <div class="form-group mb-3">
+            
+            <div class="form-group mb-3" ">
                <label>العنوان :</label>
-               <input type="text" class="form-control" name="addreces" placeholder="بغداد\السيدية \ شارع التجاري ">
+               <select name="Governorate" style="font-size: 20px; margin-top: 20px; text-align:end;" class="form-select" aria-label="Default select example">
+              <option value="أربيل" class="box"> أربيل</option>
+              <option value="الأنبار" class="box">الأنبار</option>
+              <option value="بابل" class="box">  بابل</option>
+              <option value="بغداد" class="box"> بغداد  </option>
+              <option value="البصرة" class="box">  البصرة </option>
+              <option value="حلبجة" class="box"> حلبجة  </option>
+              <option value="دهوك" class="box"> دهوك  </option>
+              <option value="القادسية" class="box"> القادسية  </option>
+              <option value="ديالى" class="box"> ديالى  </option>
+              <option value="ذي قار" class="box">  ذي قار </option>
+              <option value="السليمانية" class="box">  السليمانية </option>
+              <option value="صلاح الدين" class="box"> صلاح الدين  </option>
+              <option value="	كركوك" class="box"> 	كركوك  </option>
+              <option value="كربلاء" class="box"> كربلاء  </option>
+              <option value="	المثنى" class="box"> 	المثنى  </option>
+              <option value="ميسان" class="box"> ميسان  </option>
+              <option value="النجف" class="box">  النجف </option>
+              <option value="نينوى" class="box">  نينوى </option>
+
+      </select>      
+      <div class="mb-3">
+               <label class="form-label">العنوان </label>
+               <input type="text" class="form-control" name="addreces" placeholder="اكتب رقم المستلم ">
             </div>
+         </div>
              <div class="col">
                   <label class="form-label">ملاحضة:</label>
   <textarea class="form-control" style="height: 180px" placeholder="اضف كامل التفاصيل عن الطلب " name="note" id="floatingTextarea"></textarea>

@@ -42,12 +42,12 @@ if (isset($_POST["submit"])) {
    $addreces = $_POST['addreces'];
    $user_id = $userInfo['id'];
    $order_page_name = $_SESSION['user_name'];
+  $statuse = 1;
 
 
 
-
-   $sql = "INSERT INTO `orders`(`orderN`, `price`, `note`, `userNumber`, `addreces`, `user_id`, `order_page_name`) 
-   VALUES ('$orderN','$price','$note','$userNumber','$addreces', '$user_id', '$order_page_name')";
+   $sql = "INSERT INTO `orders`(`orderN`, `price`, `note`, `userNumber`, `addreces`, `user_id`, `order_page_name`,) 
+   VALUES ('$orderN','$price','$note','$userNumber','$addreces', '$user_id', '$order_page_name',)";
 
    $result = mysqli_query($conn, $sql);
 

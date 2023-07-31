@@ -72,11 +72,9 @@ if (isset($_POST["submit"])) {
     <!-- Start Header -->
     <div class="header" id="header">
       <div class="container">
-        <a href="#" class="logo">Qaryat Gifts</a>
+        <h1><a href="#" class="logo">Qaryat Gifts</a></h1>
         <ul class="main-nav">
          <li><a href="index.php"> عرض الطلبات   </a></li>
-
-         
         </ul>
       </div>
     </div>

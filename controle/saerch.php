@@ -100,6 +100,8 @@ if(isset($_POST['saerchInput'])){
            <th scope="col">تعديل </th>
 
            <th scope="col"> عرض</th>
+           <th scope="col"> الحالة </th>
+
 
 
         </tr>
@@ -125,6 +127,19 @@ if(isset($_POST['saerchInput'])){
                   <td><a href="delete.php?id=<?php echo $row["id"] ?>" class="link-dark"><i class="bi bi-trash-fill"></i></a></td>
                   <td><a href="edit.php?id=<?php echo $row["id"] ?>" class="link-dark"><i class="bi bi-pencil-square"></i></a> </td>
                   <td> <a href="order.php?id=<?php echo $row["id"] ?>" class="link-dark"><i class="bi bi-box-arrow-up-right"></i> </a></td>
+                  <td><a href="order.php?id=<?php echo $row["id"] ?>" class="link-dark" style= "text-decoration: auto;
+    color: red;
+    font-weight: 700;
+    list-style: none;"><?php if($row["statuse"] == "1"){
+              echo "قيد التجهيز ";}elseif($row["statuse"] == "2"){
+                 echo "تم ارسال الطلب الى شركة التوصيل ";
+              }elseif($row["statuse"] == "3"){
+                echo "تم استلام الطلب ";
+             }
+             elseif($row["statuse"] == "4"){
+              echo "طلب راجع";
+           }?> </a></td>
+
 
             
           </tr>

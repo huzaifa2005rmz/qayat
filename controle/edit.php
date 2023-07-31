@@ -1,7 +1,14 @@
 <?php
 include "db_conn.php";
+
+
+include '../login/config.php';
+session_start();
 $id = $_GET["id"];
 $admint = $_SESSION['admin'];
+
+$user_id = $_SESSION['user_id'];
+ $admint = $_SESSION['admin'];
 
 
 if($admint == "huzaifaD"){
@@ -25,13 +32,14 @@ if (isset($_POST["submit"])) {
   $note = $_POST['note'];
   $userNumber = $_POST['userNumber'];
   $addreces = $_POST['addreces'];
+  $statuse = $_POST['statuse'];
 
-  $sql = "UPDATE `orders` SET `orderN`='$orderN',`price`='$price',`note`='$note',`userNumber`='$userNumber' WHERE id = $id";
+  $sql = "UPDATE `orders` SET `orderN`='$orderN',`price`='$price',`note`='$note',`userNumber`='$userNumber',`statuse`='$statuse' WHERE id = $id";
 
   $result = mysqli_query($conn, $sql);
 
   if ($result) {
-    header("Location: ");
+    header("Location: index.php");
   } else {
     echo "Failed: " . mysqli_error($conn);
   }
@@ -95,6 +103,7 @@ if (isset($_POST["submit"])) {
           <input type="text" class="form-control" name="userNumber" value="<?php echo $row["userNumber"] ?>">
                     <label for="female" class="form-input-label">العنوان </label>
           <input type="text" class="form-control" name="addreces" value="<?php echo $row["addreces"] ?> ">
+         
         </div>
         <!-- start textarea  -->
         <div class="form-floating">
@@ -102,10 +111,15 @@ if (isset($_POST["submit"])) {
   <label for="floatingTextarea">Comments</label>
 </div>
         <!-- end textarea -->
+        <select name="statuse" style="font-size: 20px; margin-top: 20px;">
+              <option value="1" class="box"> قيد التجهيز</option>
+              <option value="2" class="box">تم ارسال الطلب   </option>
+              <option value="3" class="box">  تم استلام الطلب  </option>
+              <option value="4" class="box">  راجع </option>
+      </select>
 
-        <div style="
-    padding: 26px;
-">
+        <div style="padding: 26px;">
+
           <button type="submit" class="btn btn-success" name="submit">Update</button>
           <a href="index.php" class="btn btn-danger">Cancel</a>
         </div>
