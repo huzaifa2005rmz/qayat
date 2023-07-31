@@ -72,7 +72,7 @@ if(isset($_GET['logout'])){
 			<span class="text">لوحة التحكم</span>
 		</a>
 		<ul class="side-menu top">
-			<li class="active">
+			<li>
 				<a href="conl.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">المستخدمين</span>
@@ -96,9 +96,9 @@ if(isset($_GET['logout'])){
 					<span class="text">كل الاوردرات </span>
 				</a>
 			</li>
-			<li>
+            <li class="active">
 				<a href="accuntit.php">
-				<i class='bx bxs-calculator'></i>
+                <i class='bx bxs-calculator'></i>
 					<span class="text">الحسابات   </span>
 				</a>
 			</li>
@@ -176,38 +176,47 @@ if(isset($_GET['logout'])){
 					<table>
 						<thead>
 							<tr>
-								<th>User</th>
-								<th>Date Order</th>
-								<th>Status</th>
+								<th>الصافي</th>
+                                <th>الحساب التجاري </th>
+                                <th>العنوان </th>
+								<th>ID</th>
+								<th>الطلب</th>
+								<th>القيم  </th>
+
 							</tr>
 						</thead>
 
 						<!-- start php code users  -->
 								   <?php
-							        $sql = "SELECT * FROM `user_form` ";
+							        $sql = "SELECT * FROM `orders` ";
 							        $result = mysqli_query($conn, $sql);
 							        while ($row = mysqli_fetch_assoc($result)) {
        								 ?>
 						<!-- end php code selsct users  -->
 						<tbody>
 							<tr>
-								<td>
-									<img src="../login/uploaded_img/<?php echo $row['image'] ?>">
-									<p><?php echo $row['name'] ?></p>
+							<td><?php $pricePage = $row['price'] - $row['priceAd'];
+							if($row['priceAd']){
+                                echo $pricePage;   
+							}else{
+								echo "لم يتم حساب الطلب ";
+							}
+                                 ?></td>
+								
+                                <td>
+									<p><?php echo $row['page_name'] ?></p>
 								</td>
-								<td><?php echo $row['email'] ?></td>
-								<td><a href="delete-user.php?id=<?php echo $row['id'] ?>" > <span class="status pending">حذف</span></a> 
-									<span class="status <?php
-								 if($row['usertype'] === "huzaifaD"){
-								 	echo "process";
-								 }elseif ($row['usertype'] === "page") {
-								 	echo "pending";
-								 } else {
-								 	echo "completed";
-								 }
-								  ?>"><?php echo $row['usertype'] 
+                                <td>
+									<p><?php $addric = $row['Governorate'] ." ". $row['addreces'];
+									echo $addric?></p>
+								</td>
+								<td>
+									<p><?php echo $row['id'] ?></p>
+								</td>
+								<td><a href="order.php?id=<?php echo $row['id'] ?>" > <span class="status completed">عرض</span></a> 
+								<td><a href="edit.php?id=<?php echo $row['id'] ?>" > <span class="status completed">تعديل</span></a> 
 
-								?></span>
+								</span>
 								</td>
 							</tr>
 						<?php } ?> 

@@ -29,12 +29,13 @@ if($admint == "huzaifaD"){
 if (isset($_POST["submit"])) {
   $orderN = $_POST['orderN'];
   $price = $_POST['price'];
+  $priceAd = $_POST['priceAd'];
   $note = $_POST['note'];
   $userNumber = $_POST['userNumber'];
   $addreces = $_POST['addreces'];
   $statuse = $_POST['statuse'];
 
-  $sql = "UPDATE `orders` SET `orderN`='$orderN',`price`='$price',`note`='$note',`userNumber`='$userNumber',`statuse`='$statuse' WHERE id = $id";
+  $sql = "UPDATE `orders` SET `orderN`='$orderN',`price`='$price',`note`='$note',`userNumber`='$userNumber',`statuse`='$statuse',`priceAd`='$priceAd' WHERE id = $id";
 
   $result = mysqli_query($conn, $sql);
 
@@ -89,13 +90,8 @@ if (isset($_POST["submit"])) {
       <form action="" method="post" style="width:50vw; min-width:300px;">
         <div class="row mb-3">
           <div class="col">
-            <label class="form-label">First Name:</label>
+            <label class="form-label">رقم الطلب :</label>
             <input type="number" class="form-control" name="orderN" value="<?php echo $row['orderN'] ?>">
-          </div>
-
-          <div class="col">
-            <label class="form-label">Last Name:</label>
-            <input type="number" class="form-control" name="price" value="<?php echo $row['price'] ?>">
           </div>
         </div>
         <div class="form-group mb-3">
@@ -103,6 +99,15 @@ if (isset($_POST["submit"])) {
           <input type="text" class="form-control" name="userNumber" value="<?php echo $row["userNumber"] ?>">
                     <label for="female" class="form-input-label">العنوان </label>
           <input type="text" class="form-control" name="addreces" value="<?php echo $row["addreces"] ?> ">
+          <div class="row mb-3">
+                <div class="col">
+                  <label class="form-label"> السعر مع التوصيل :</label>
+                  <input type="text" class="form-control" name="priceAd" placeholder="الحساب التجاري  " value="<?php echo $row["priceAd"] ?> ">
+               </div>
+                  <div class="col">
+                  <label class="form-label">السعر  الكامل  :</label>
+                  <input type="number" class="form-control" name="price" placeholder="السعر " value="<?php echo $row["price"] ?> ">
+               </div>
          
         </div>
         <!-- start textarea  -->

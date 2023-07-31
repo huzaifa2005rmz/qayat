@@ -103,6 +103,12 @@ https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css
           <span class="text">كل الاوردرات </span>
         </a>
       </li>
+      <li>
+				<a href="accuntit.php">
+				<i class='bx bxs-calculator'></i>
+					<span class="text">الحسابات   </span>
+				</a>
+			</li>
       
     </ul>
     <ul class="side-menu">

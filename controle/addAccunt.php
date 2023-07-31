@@ -144,6 +144,12 @@ if(isset($_GET['logout'])){
                <span class="text">كل الاوردرات </span>
             </a>
          </li>
+         <li>
+				<a href="accuntit.php">
+				<i class='bx bxs-calculator'></i>
+					<span class="text">الحسابات   </span>
+				</a>
+			</li>
          
       </ul>
       <ul class="side-menu">

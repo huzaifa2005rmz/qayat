@@ -77,6 +77,13 @@ if(isset($_GET['logout'])){
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="../orders/style.css?v=<?php echo time(); ?>">
 	<title>user order </title>
+   <style>
+      @media print{
+       #hidn{
+         visibility: hidden;
+       }
+      }
+   </style>
 </head>
 <body>
 
@@ -104,6 +111,7 @@ if(isset($_GET['logout'])){
        	<p class="text-p ">  <?php echo $row["note"]  ?> </p> 
        </div>
     <div class="images">
+    <a href="index.php" style="text-decoration: none; color:#fff; border: 1px solid #fff; padding: 10px; background: #333; display: block; margin: 36px auto;" id="hidn">العودة الى الصفحة الرئيسية  </a>
 
     <?php
           
@@ -128,6 +136,7 @@ $foringkeyImage = mysqli_fetch_assoc($foringkeyImages);
 
 
     </div>
+
 </body>
 </html>
 

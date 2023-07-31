@@ -42,6 +42,7 @@ if (isset($_POST["submit"])) {
    $userNumber = $_POST['userNumber'];
    $addreces =  $_POST['addreces'] ;
    $Governorate = $_POST['Governorate'];
+   $priceAd = $_POST['priceAd'];
    $user_id = $userInfo['id'];
    $order_page_name = $_SESSION['user_name'];
    $statuse = 1;
@@ -49,8 +50,8 @@ if (isset($_POST["submit"])) {
 
 
 
-   $sql = "INSERT INTO `orders`(`orderN`, `price`, `note`, `userNumber`, `addreces`, `user_id`, `order_page_name`, `page_name`, `statuse`, `Governorate`) 
-   VALUES ('$orderN','$price','$note','$userNumber','$addreces', '$user_id', '$order_page_name', '$page_name', '$statuse', '$Governorate')";
+   $sql = "INSERT INTO `orders`(`orderN`, `price`, `note`, `userNumber`, `addreces`, `user_id`, `order_page_name`, `page_name`, `statuse`, `Governorate`, `priceAd`) 
+   VALUES ('$orderN','$price','$note','$userNumber','$addreces', '$user_id', '$order_page_name', '$page_name', '$statuse', '$Governorate', '$priceAd')";
 
    $result = mysqli_query($conn, $sql);
 
@@ -153,6 +154,12 @@ if(isset($_GET['logout'])){
                <span class="text">كل الاوردرات </span>
             </a>
          </li>
+         <li>
+				<a href="accuntit.php">
+				<i class='bx bxs-calculator'></i>
+					<span class="text">الحسابات   </span>
+				</a>
+			</li>
          
       </ul>
       <ul class="side-menu">
@@ -216,10 +223,7 @@ if(isset($_GET['logout'])){
                   <label class="form-label"> اسم الحساب التجاري   :</label>
                   <input type="text" class="form-control" name="page_name" placeholder="الحساب التجاري  ">
                </div>
-                  <div class="col">
-                  <label class="form-label">السعر   :</label>
-                  <input type="number" class="form-control" name="price" placeholder="السعر ">
-               </div>
+                
             </div>
 
             <div class="mb-3">
@@ -227,7 +231,9 @@ if(isset($_GET['logout'])){
                <input type="text" class="form-control" name="userNumber" placeholder="اكتب رقم المستلم ">
             </div>
             
-            <div class="form-group mb-3" ">
+            
+            
+            <div class="form-group mb-3" >
                <label>العنوان :</label>
                <select name="Governorate" style="font-size: 20px; margin-top: 20px; text-align:end;" class="form-select" aria-label="Default select example">
               <option value="أربيل" class="box"> أربيل</option>
@@ -259,6 +265,16 @@ if(isset($_GET['logout'])){
                   <label class="form-label">ملاحضة:</label>
   <textarea class="form-control" style="height: 180px" placeholder="اضف كامل التفاصيل عن الطلب " name="note" id="floatingTextarea"></textarea>
                </div>
+               <div class="row mb-3">
+                <div class="col">
+                  <label class="form-label"> السعر مع التوصيل :</label>
+                  <input type="text" class="form-control" name="priceAd" placeholder="الحساب التجاري  ">
+               </div>
+                  <div class="col">
+                  <label class="form-label">السعر  الكامل  :</label>
+                  <input type="number" class="form-control" name="price" placeholder="السعر ">
+               </div>
+            </div>
 
 
             <div>

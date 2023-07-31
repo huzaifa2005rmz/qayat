@@ -55,6 +55,7 @@ if (isset($_POST["submit"])) {
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/elzero.css" />
 
    <!-- Bootstrap -->
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -62,19 +63,21 @@ if (isset($_POST["submit"])) {
    <!-- Font Awesome -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" type="text/css" href="style.css">
-        <link rel="stylesheet" href="../css/elzero.css" />
 
 
    <title>PHP CRUD Application</title>
 </head>
 
 <body>
-    <!-- Start Header -->
-    <div class="header" id="header">
+   <!-- Start Header -->
+   <div class="header" id="header">
       <div class="container">
-        <h1><a href="#" class="logo">Qaryat Gifts</a></h1>
+        <a href="#" class="logo" style="text-decoration: none;">Qaryat Gifts</a>
         <ul class="main-nav">
-         <li><a href="index.php"> عرض الطلبات   </a></li>
+          <li>
+            <a href="index.php" style="text-decoration: none;"> عرض الطلبات </a>
+
+          </li>
         </ul>
       </div>
     </div>
