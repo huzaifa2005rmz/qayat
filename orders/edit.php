@@ -38,20 +38,31 @@ if (isset($_POST["submit"])) {
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="style.css?v=<?php echo time(); ?>">
+  <link rel="stylesheet" type="text/css" href="../css/elzero.css?v=<?php echo time(); ?>">
 
-  <title>PHP CRUD Application</title>
+
+  <title>qaryat</title>
 </head>
 
-<body>
-  <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #00ff5573;">
-    PHP Complete CRUD Application
-  </nav>
+<body style="widit: auto;">
+     <!-- Start Header -->
+     <div class="header" id="header">
+      <div class="container" style="">
+        <a href="#" class="logo" style="text-decoration: none;">Qaryat Gifts</a>
+        <ul class="main-nav">
+          <li>
+            <a href="index.php" style="text-decoration: none;"> عرض الطلبات </a>
+
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- End Header -->
 
   <div class="container">
     <div class="text-center mb-4">
-      <h3>Edit User Information</h3>
-      <p class="text-muted">Click update after changing any information</p>
+    
     </div>
 
     <?php

@@ -29,7 +29,7 @@ if(isset($_GET['logout'])){
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="style.css?v=<?php echo time(); ?>">
       
           <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -43,10 +43,10 @@ if(isset($_GET['logout'])){
 <body>
  <!-- Start Header -->
     <div class="header" id="header">
-      <div class="container">
-        <a href="#" class="logo">Qaryat Gifts</a>
+      <div class="container" style="align-items: stretch; justify-content: space-between;">
+        <a href="#" class="logo" style="text-decoration: none;">Qaryat Gifts</a>
         <ul class="main-nav">
-          <li><a href="add-new.php">انشاء طلب  </a></li>
+          <li><a href="add-new.php" style="text-decoration: none;">انشاء طلب  </a></li>
          
         </ul>
       </div>
@@ -66,12 +66,12 @@ if(isset($_GET['logout'])){
     <p class="card-text"><?php echo $row["note"] ?></</p>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">ID :<?php echo $row["id"] ?></li>
-    <li class="list-group-item"> ORDER NUMBER :<?php echo $row["orderN"] ?></</li>
-    <li class="list-group-item">CLINT NUMBER :<?php echo $row["userNumber"] ?></</li>
-    <li class="list-group-item">ADDRECSE :<?php echo $row["addreces"] ?></</li>
-    <li class="list-group-item">PAGE NAME :<?php echo $row["order_page_name"] ?></</li>
-    <li class="list-group-item">PRICE :<?php echo $row["price"] ?></</li>
+    <li class="list-group-item"> <span><?php echo $row["id"] ?></span>: ID </li>
+    <li class="list-group-item"> <span><?php echo $row["orderN"] ?></span>: رقم الطلب  </li>
+    <li class="list-group-item"><span><?php echo $row["userNumber"] ?></span>: رقم الستلم  </li>
+    <li class="list-group-item"> <span><?php echo $row["addreces"] ?></span> : العنوان  </li>
+    <li class="list-group-item"><span><?php echo $row["order_page_name"] ?></span>: اسم الحساب التجاري  </li>
+    <li class="list-group-item"><span><?php echo $row["price"] ?></span> : السعر  </li>
   </ul>
   <div class="card-body" style="display: flex; justify-content: space-around; align-items:center;">
               <a href="delete.php?id=<?php echo $row["id"] ?>" class="link-dark card-link"><i class="fa-solid fa-trash fs-5"></i></a>

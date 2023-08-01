@@ -65,13 +65,13 @@ if (isset($_POST["submit"])) {
   <link rel="stylesheet" type="text/css" href="style.css">
 
 
-   <title>PHP CRUD Application</title>
+   <title>qaryat</title>
 </head>
 
 <body>
    <!-- Start Header -->
    <div class="header" id="header">
-      <div class="container">
+      <div class="container" style="width: auto;">
         <a href="#" class="logo" style="text-decoration: none;">Qaryat Gifts</a>
         <ul class="main-nav">
           <li>

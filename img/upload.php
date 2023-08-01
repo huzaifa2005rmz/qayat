@@ -64,6 +64,7 @@ $foringkeyImage = mysqli_fetch_assoc($foringkeyImages);
     <title>Drag & Drop or Browse: File Upload | qaryat</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    
   </head>
   <body>
     <form action="" method="post" enctype="multipart/form-data">
@@ -78,6 +79,8 @@ $foringkeyImage = mysqli_fetch_assoc($foringkeyImages);
 
     </form>
     <br>
-      <script src="main.js"></script>
+    <script src="/main.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.js" integrity="sha512-8Z5++K1rB3U+USaLKG6oO8uWWBhdYsM3hmdirnOEWp8h2B1aOikj5zBzlXs8QOrvY9OxEnD2QDkbSKKpfqcIWw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   </body>
 </html>
