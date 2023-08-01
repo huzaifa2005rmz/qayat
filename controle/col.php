@@ -129,9 +129,9 @@ if(isset($_GET['logout'])){
 		<nav>
 			<i class='bx bx-menu' ></i>
 			<a href="#" class="nav-link">Categories</a>
-			<form action="#">
+			<form action="saerch.php" method="POST">
 				<div class="form-input">
-					<input type="search" placeholder="Search...">
+					<input type="search" placeholder="Search..." name="saerchInput">
 					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
 				</div>
 			</form>
@@ -199,11 +199,11 @@ if(isset($_GET['logout'])){
 								<td><a href="delete-user.php?id=<?php echo $row['id'] ?>" > <span class="status pending">حذف</span></a> 
 									<span class="status <?php
 								 if($row['usertype'] === "huzaifaD"){
-								 	echo "process";
+								 	echo "completed";
 								 }elseif ($row['usertype'] === "page") {
 								 	echo "pending";
 								 } else {
-								 	echo "completed";
+								 	echo "process";
 								 }
 								  ?>"><?php echo $row['usertype'] 
 

@@ -73,7 +73,7 @@ if(isset($_GET['logout'])){
 		</a>
 		<ul class="side-menu top">
 			<li>
-				<a href="conl.php">
+				<a href="col.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">المستخدمين</span>
 				</a>
@@ -129,9 +129,9 @@ if(isset($_GET['logout'])){
 		<nav>
 			<i class='bx bx-menu' ></i>
 			<a href="#" class="nav-link">Categories</a>
-			<form action="#">
+			<form action="saerch.php" method="POST">
 				<div class="form-input">
-					<input type="search" placeholder="Search...">
+					<input type="search" placeholder="Search..." name="saerchInput">
 					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
 				</div>
 			</form>
@@ -191,34 +191,45 @@ if(isset($_GET['logout'])){
 							        $sql = "SELECT * FROM `orders` ";
 							        $result = mysqli_query($conn, $sql);
 							        while ($row = mysqli_fetch_assoc($result)) {
+										if($row['statuse'] == 3){
        								 ?>
 						<!-- end php code selsct users  -->
 						<tbody>
 							<tr>
-							<td><?php $pricePage = $row['price'] - $row['priceAd'];
-							if($row['priceAd']){
-                                echo $pricePage;   
-							}else{
-								echo "لم يتم حساب الطلب ";
-							}
-                                 ?></td>
-								
-                                <td>
-									<p><?php echo $row['page_name'] ?></p>
-								</td>
-                                <td>
-									<p><?php $addric = $row['Governorate'] ." ". $row['addreces'];
-									echo $addric?></p>
-								</td>
-								<td>
-									<p><?php echo $row['id'] ?></p>
-								</td>
-								<td><a href="order.php?id=<?php echo $row['id'] ?>" > <span class="status completed">عرض</span></a> 
-								<td><a href="edit.php?id=<?php echo $row['id'] ?>" > <span class="status completed">تعديل</span></a> 
+							<td> <?php $pricePage = $row['price'] - $row['priceAd'];
+							
+								if($row['priceAd']){
+									echo $pricePage;   
+								}else{
+									echo "لم يتم حساب الطلب ";
+								}
+									 ?> 000</td>
+									
+									<td>
+										<p><?php if($row['page_name']){
+											echo $row['page_name'];
+										}else{
+											echo $row['order_page_name'];
+										}  ?></p>
+									</td>
+									<td>
+										<p><?php $addric = $row['Governorate'] ." ". $row['addreces'];
+										echo $addric?></p>
+									</td>
+									<td>
+										<p><?php echo $row['id'] ?></p>
+									</td>
+									<td><a href="order.php?id=<?php echo $row['id'] ?>" > <span class="status completed">عرض</span></a> 
+									<td><a href="edit.php?id=<?php echo $row['id'] ?>" > <span class="status completed">تعديل</span></a> 
+	
+									</span>
+									</td>
+								</tr>
+								<?php 
 
-								</span>
-								</td>
-							</tr>
+								}?>
+							  
+							
 						<?php } ?> 
 						
 						</tbody>

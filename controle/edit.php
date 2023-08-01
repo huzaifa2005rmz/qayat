@@ -106,7 +106,7 @@ if (isset($_POST["submit"])) {
                </div>
                   <div class="col">
                   <label class="form-label">السعر  الكامل  :</label>
-                  <input type="number" class="form-control" name="price" placeholder="السعر " value="<?php echo $row["price"] ?> ">
+                  <input type="text" class="form-control" name="price" placeholder="السعر " value="<?php echo $row["price"] ?> ">
                </div>
          
         </div>

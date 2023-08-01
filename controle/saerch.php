@@ -31,216 +31,342 @@ if(isset($_POST['saerchInput'])){
 	$saerchInput = $_POST['saerchInput'];
 
 	$sqlSerch = "SELECT * FROM orders WHERE userNumber LIKE '{$saerchInput}%' or id LIKE '{$saerchInput}%'
-  or order_page_name LIKE '{$saerchInput}%'";
+  or page_name LIKE '{$saerchInput}%' or orderN LIKE '{$saerchInput}%'";
 	$resultSaerch = mysqli_query($conn, $sqlSerch);
 
 	if(mysqli_num_rows($resultSaerch) > 0){
 		?>
      
-<!DOCTYPE html>
+     <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Qaryat Gifts </title>
-    <link rel="stylesheet" href="css/normalize.css" />
-    <link rel="stylesheet" href="..//css/elzero.css?v=<?php echo time(); ?>" />
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet" />
-     <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-  <!-- Option 1: Include in HTML -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  </head>
-  <body>
-    <!-- Start Header -->
-    <div class="header" id="header">
-      <div class="container">
-        <ul class="main-nav">
-          <li><a href="index.php">orders</a></li>
-          <li><a href="../index.php">home</a></li>
-          <li><a href="col.php">controle panel </a></li>
-          <li>
-            <a href="../login/login.php">تسجيل الدخول</a>
-            
-          </li>
-        </ul>
-        <form class="row g-3" action="saerch.php" method="POST">
-  <div class="col-auto">
-    <input type="text" class="form-control" name="saerchInput" id="inputPassword2 live-saerch" placeholder="بحث  ...">
-  </div>
-  <div class="col-auto">
-    <button type="submit" name="submit" class="btn btn-primary mb-3">بحث </button>
-  </div>
-</form>
-      </div>
-    </div>
-    <!-- End Header -->
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="html/style.css?v=<?php echo time(); ?>">
 
-  <div class="container" style="padding: 30px;">
-    
-    <a href="add-new.php" class="btn btn-dark mb-3">Add New</a>
-
-    <table class="table table-hover text-center">
-      <thead class="table-dark">
-        <tr>
-          <th scope="col">ID</th>
-         <th scope="col">الحساب التجاري  </th>
-          <th scope="col">رقم الطلب </th>
-          <th scope="col">السعر</th>
-          <th scope="col">ملاحضات</th>
-          <th scope="col">رقم المستلم </th>
-          <th scope="col">العنوان </th>
-                     <th scope="col">حذف </th>
-
-           <th scope="col">تعديل </th>
-
-           <th scope="col"> عرض</th>
-           <th scope="col"> الحالة </th>
+	<title>AdminHub</title>
+</head>
+<body>
 
 
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="col.php" class="brand">
+			<i class='bx bxs-smile'></i>
+			<span class="text">لوحة التحكم</span>
+		</a>
+		<ul class="side-menu top">
+			<li >
+				<a href="conl.php">
+					<i class='bx bxs-dashboard' ></i>
+					<span class="text">المستخدمين</span>
+				</a>
+			</li>
+			<li>
+				<a href="addAccunt.php">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">اضافة حساب </span>
+				</a>
+			</li>
+			<li>
+				<a href="create-new-order.php">
+					<i class='bx bxs-doughnut-chart' ></i>
+					<span class="text">اضافة اوردر</span>
+				</a>
+			</li>
+			<li>
+				<a href="index.php">
+					<i class='bx bxs-message-dots' ></i>
+					<span class="text">كل الاوردرات </span>
+				</a>
+			</li>
+			<li>
+				<a href="accuntit.php">
+				<i class='bx bxs-calculator'></i>
+					<span class="text">الحسابات   </span>
+				</a>
+			</li>
+			
+		</ul>
+		<ul class="side-menu">
+			<li>
+				<a href="../login/Home.php">
+					<i class='bx bxs-cog' ></i>
+					<span class="text">Settings</span>
+				</a>
+			</li>
+			<li>
+				<a href="../login/Home.php" class="logout">
+					<i class='bx bxs-log-out-circle' ></i>
+					<span class="text">Logout</span>
+				</a>
+			</li>
+		</ul>
+	</section>
+	<!-- SIDEBAR -->
 
-        </tr>
-      </thead>
-      <tbody>
-        <?php
-        $sql = "SELECT * FROM `orders`";
-        $result = mysqli_query($conn, $sql);
-        while ($row = mysqli_fetch_assoc($resultSaerch)) {
-        ?>
-          <tr>
-            <td><?php echo $row["id"] ?></td>
-            <td><?php echo $row["order_page_name"] ?></td>
-            <td><?php echo $row["orderN"] ?></td>
-            <td><?php echo $row["price"] ?></td>
-            <td style="width: 200px;
-    overflow: hidden;
-    display: block;
-    height: 50px;
-    text-align: end;"><?php echo $row["note"] ?></td>
-            <td><?php echo $row["userNumber"] ?></td>
-            <td><?php echo $row["addreces"] ?></td>
-                  <td><a href="delete.php?id=<?php echo $row["id"] ?>" class="link-dark"><i class="bi bi-trash-fill"></i></a></td>
-                  <td><a href="edit.php?id=<?php echo $row["id"] ?>" class="link-dark"><i class="bi bi-pencil-square"></i></a> </td>
-                  <td> <a href="order.php?id=<?php echo $row["id"] ?>" class="link-dark"><i class="bi bi-box-arrow-up-right"></i> </a></td>
-                  <td><a href="order.php?id=<?php echo $row["id"] ?>" class="link-dark" style= "text-decoration: auto;
-    color: red;
-    font-weight: 700;
-    list-style: none;"><?php if($row["statuse"] == "1"){
-              echo "قيد التجهيز ";}elseif($row["statuse"] == "2"){
-                 echo "تم ارسال الطلب الى شركة التوصيل ";
-              }elseif($row["statuse"] == "3"){
-                echo "تم استلام الطلب ";
-             }
-             elseif($row["statuse"] == "4"){
-              echo "طلب راجع";
-           }?> </a></td>
 
 
-            
-          </tr>
-        <?php
-        }
-        ?>
-      </tbody>
-    </table>
-  </div>
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu' ></i>
+			<a href="#" class="nav-link">Categories</a>
+			<form action="" method="POST">
+				<div class="form-input">
+					<input type="search" placeholder="Search..." name="saerchInput" >
+					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+				</div>
+			</form>
+			<input type="checkbox" id="switch-mode" hidden>
+			<label for="switch-mode" class="switch-mode"></label>
+			<a href="#" class="notification">
+				<i class='bx bxs-bell' ></i>
+				<span class="num">8</span>
+			</a>
+			<a href="#" class="profile">
+				<img src="../login/uploaded_img/<?php echo $img['image'] ?>">
+			</a>
+		</nav>
+		<!-- NAVBAR -->
 
-  <!-- Bootstrap -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-  <!-- jqyery script link cdn  -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+		<!-- MAIN -->
+		<main>
+			<div class="head-title">
+				<div class="left">
+					<h1>Dashboard</h1>
+					<ul class="breadcrumb">
+						<li>
+							<a href="#">Dashboard</a>
+						</li>
+						<li><i class='bx bx-chevron-right' ></i></li>
+						<li>
+							<a class="active" href="#">Home</a>
+						</li>
+					</ul>
+				</div>
+			
+			</div>
 
+
+			<div class="table-data">
+				<div class="order">
+					<div class="head">
+						<h3>Recent Orders</h3>
+						<i class='bx bx-search' ></i>
+						<i class='bx bx-filter' ></i>
+					</div>
+          <table>
+						<thead>
+							<tr>
+								<th>الصافي</th>
+                                <th>الحساب التجاري </th>
+                                <th>العنوان </th>
+								<th>ID</th>
+								<th>الطلب</th>
+								<th>القيم  </th>
+
+							</tr>
+						</thead>
+
+						<!-- start php code users  -->
+								   <?php
+							        $sql = "SELECT * FROM `orders` ";
+							        $result = mysqli_query($conn, $sql);
+							        while ($row = mysqli_fetch_assoc($result)) {
+       								 ?>
+						<!-- end php code selsct users  -->
+						<tbody>
+							<tr>
+							<td><?php $pricePage = $row['price'] - $row['priceAd'];
+							if($row['priceAd']){
+                                echo $pricePage;   
+							}else{
+								echo "لم يتم حساب الطلب ";
+							}
+                                 ?></td>
+								
+                                <td>
+									<p><?php if($row['order_page_name']){
+										echo $row['order_page_name'];
+									}else{
+										echo $row['page_name'];
+									}  ?></p>
+								</td>
+                                <td>
+									<p><?php $addric = $row['Governorate'] ." ". $row['addreces'];
+									echo $addric?></p>
+								</td>
+								<td>
+									<p><?php echo $row['id'] ?></p>
+								</td>
+								<td><a href="order.php?id=<?php echo $row['id'] ?>" > <span class="status completed">عرض</span></a> 
+								<td><a href="edit.php?id=<?php echo $row['id'] ?>" > <span class="status completed">تعديل</span></a> 
+
+								</span>
+								</td>
+							</tr>
+						<?php } ?> 
+						
+						</tbody>
+					</table>
+				</div>
+				
+			</div>
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+
+	<script src="html/script.js"></script>
 </body>
-
 </html>
+
+
        <?php
 	}elseif(mysqli_num_rows($resultSaerch) < 1){
-   ?>
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Qaryat Gifts </title>
-    <link rel="stylesheet" href="css/normalize.css" />
-    <link rel="stylesheet" href="..//css/elzero.css?v=<?php echo time(); ?>" />
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet" />
-     <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-  <!-- Option 1: Include in HTML -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-
-  </head>
-  <body>
-    <!-- Start Header -->
-    <div class="header" id="header">
-      <div class="container">
-        <ul class="main-nav">
-          <li><a href="index.php">orders</a></li>
-          <li><a href="../index.php">home</a></li>
-          <li><a href="col.php">controle panel </a></li>
-          <li>
-            <a href="../login/login.php">تسجيل الدخول</a>
-            
-          </li>
-        </ul>
-        <form class="row g-3" action="saerch.php" method="POST">
-  <div class="col-auto">
-    <input type="text" class="form-control" name="saerchInput" id="inputPassword2 live-saerch" placeholder="بحث  ...">
-  </div>
-  <div class="col-auto">
-    <button type="submit" name="submit" class="btn btn-primary mb-3">بحث </button>
-  </div>
-</form>
-      </div>
-    </div>
-    <!-- End Header -->
-
-  <div class="container" style="padding: 30px;">
-    
-    <a href="add-new.php" class="btn btn-dark mb-3">Add New</a>
-
-    <table class="table table-hover text-center">
-      <thead class="table-dark">
-        <tr>
-          <th scope="col">ID</th>
-         <th scope="col">الحساب التجاري  </th>
-          <th scope="col">رقم الطلب </th>
-          <th scope="col">السعر</th>
-          <th scope="col">ملاحضات</th>
-          <th scope="col">رقم المستلم </th>
-          <th scope="col">العنوان </th>
-                     <th scope="col">حذف </th>
-
-           <th scope="col">تعديل </th>
-
-           <th scope="col"> عرض</th>
-
-
-        </tr>
-      </thead>
-    
-    </table>
-      <h1 style="text-align: center;">لا يوجد نتائج </h1>
-  </div>
-
-  <!-- Bootstrap -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-  <!-- jqyery script link cdn  -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
-</body>
-
-</html>
+   ?>    <!DOCTYPE html>
+   <html lang="en">
+   <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+     <!-- Boxicons -->
+     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+     <!-- My CSS -->
+     <link rel="stylesheet" href="html/style.css?v=<?php echo time(); ?>">
+   
+     <title>AdminHub</title>
+   </head>
+   <body>
+   
+   
+     <!-- SIDEBAR -->
+     <section id="sidebar">
+       <a href="col.php" class="brand">
+         <i class='bx bxs-smile'></i>
+         <span class="text">لوحة التحكم</span>
+       </a>
+       <ul class="side-menu top">
+         <li >
+           <a href="col.php">
+             <i class='bx bxs-dashboard' ></i>
+             <span class="text">المستخدمين</span>
+           </a>
+         </li>
+         <li>
+           <a href="addAccunt.php">
+             <i class='bx bxs-shopping-bag-alt' ></i>
+             <span class="text">اضافة حساب </span>
+           </a>
+         </li>
+         <li>
+           <a href="create-new-order.php">
+             <i class='bx bxs-doughnut-chart' ></i>
+             <span class="text">اضافة اوردر</span>
+           </a>
+         </li>
+         <li>
+           <a href="index.php">
+             <i class='bx bxs-message-dots' ></i>
+             <span class="text">كل الاوردرات </span>
+           </a>
+         </li>
+         <li>
+           <a href="accuntit.php">
+           <i class='bx bxs-calculator'></i>
+             <span class="text">الحسابات   </span>
+           </a>
+         </li>
+         
+       </ul>
+       <ul class="side-menu">
+         <li>
+           <a href="../login/Home.php">
+             <i class='bx bxs-cog' ></i>
+             <span class="text">Settings</span>
+           </a>
+         </li>
+         <li>
+           <a href="../login/Home.php" class="logout">
+             <i class='bx bxs-log-out-circle' ></i>
+             <span class="text">Logout</span>
+           </a>
+         </li>
+       </ul>
+     </section>
+     <!-- SIDEBAR -->
+   
+   
+   
+     <!-- CONTENT -->
+     <section id="content">
+       <!-- NAVBAR -->
+       <nav>
+         <i class='bx bx-menu' ></i>
+         <a href="#" class="nav-link">Categories</a>
+         <form action="" method="POST">
+           <div class="form-input">
+             <input type="search" placeholder="Search..." name="saerchInput" >
+             <button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+           </div>
+         </form>
+         <input type="checkbox" id="switch-mode" hidden>
+         <label for="switch-mode" class="switch-mode"></label>
+         <a href="#" class="notification">
+           <i class='bx bxs-bell' ></i>
+           <span class="num">8</span>
+         </a>
+         <a href="#" class="profile">
+           <img src="../login/uploaded_img/<?php echo $img['image'] ?>">
+         </a>
+       </nav>
+       <!-- NAVBAR -->
+   
+       <!-- MAIN -->
+       <main>
+         <div class="head-title">
+           <div class="left">
+             <h1>Dashboard</h1>
+             <ul class="breadcrumb">
+               <li>
+                 <a href="#">Dashboard</a>
+               </li>
+               <li><i class='bx bx-chevron-right' ></i></li>
+               <li>
+                 <a class="active" href="#">Home</a>
+               </li>
+             </ul>
+           </div>
+         
+         </div>
+   
+   
+         <div class="table-data">
+           <div class="order">
+             <div class="head">
+               <h3>Recent Orders</h3>
+               <i class='bx bx-search' ></i>
+               <i class='bx bx-filter' ></i>
+             </div>
+             <h1>لا يوجد نتائج</h1>
+           </div>
+           
+         </div>
+       </main>
+       <!-- MAIN -->
+     </section>
+     <!-- CONTENT -->
+   
+     <script src="html/script.js"></script>
+   </body>
+   </html>
+   
 
    <?php
 

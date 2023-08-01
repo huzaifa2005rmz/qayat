@@ -100,14 +100,14 @@ if(isset($_GET['logout'])){
           $userInfoN = mysqli_fetch_assoc($userInfo);
           $order_id =  $row['user_id'];
         ?>
-        <p class="text-p "><?php echo $row['id'] ?> : ORDER ID FORM SYSTEM </p>
-       	<p class="text-p ">  <?php echo $userInfoN['name'] ?> : منشائ الطلب   </p>
-        <p class="text-p "> اسم  الحساب التجاري : <?php echo $row['page_name'] ?></p>
-       	<p class="text-p "> <?php echo $row['orderN'] ?> :رقم الطلب </p>
-       	<p class="text-p "> السعر:<?php echo $row['price'] ?> </p>
-       	<p class="text-p "><?php echo $row["userNumber"] ?> :رقم الهاتف </p>
-       	<p class="text-p ">العنوان: <?php echo $row["Governorate"] ?> <?php echo $row["addreces"] ?> <?php echo $row["Governorate"] ?>  </p>
-        <span>ملاحضة </span>
+        <p class="text-p "><span><?php echo $row['id'] ?> </span>: ORDER ID FORM SYSTEM </p>
+       	<p class="text-p ">  <span><?php echo $userInfoN['name'] ?></span> : منشائ الطلب   </p>
+        <p class="text-p "> <span><?php echo $row['page_name'] ?></span> اسم  الحساب التجاري : </p>
+       	<p class="text-p "> <span><?php echo $row['orderN'] ?></span> :رقم الطلب </p>
+       	<p class="text-p "> <span><?php echo $row['price'] ?></span>: السعر</p>
+       	<p class="text-p "><span><?php echo $row["userNumber"] ?> </span>:رقم الهاتف </p>
+       	<p class="text-p "> <span><?php echo $row["Governorate"] ?> <?php echo $row["addreces"] ?></span>  : العنوان</p>
+    
        	<p class="text-p ">  <?php echo $row["note"]  ?> </p> 
        </div>
     <div class="images">
